@@ -1,0 +1,20 @@
+language: php
+
+php:
+  - '7.4'
+
+services:
+- docker
+
+before_install:
+  - mkdir mysql
+
+install:
+  - docker build -t burger-service:latest .
+  - docker-compose up -d
+
+script:
+  - docker-compose run --rm composer install
+  - mv src/.env.example src/.env
+  - cd src/ && php artisan key:generate
+  - vendor/bin/phpunit
