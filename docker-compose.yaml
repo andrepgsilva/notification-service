@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  burger-service:
-    container_name: burger-service
-    image: burger-service:latest
+  notification-service:
+    container_name: notification-service
+    image: notification-service:latest
     depends_on:
       - nginx
     volumes:
@@ -28,7 +28,7 @@ services:
     tty: true
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: burgerservice
+      MYSQL_DATABASE: notificationservice
       MYSQL_USER: homestead
       MYSQL_PASSWORD: secret
     volumes:
@@ -43,7 +43,7 @@ services:
       - ./src:/var/www/html
 
   artisan:
-    image: burger-service:latest
+    image: notification-service:latest
     working_dir: /var/www/html
     entrypoint: ['php', 'artisan']
     depends_on:
