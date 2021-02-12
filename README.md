@@ -1,3 +1,3 @@
 ﻿# notification-service
 
-Laravel + Docker
+Notification service with Laravel and Docker.
