@@ -10,7 +10,7 @@ before_install:
   - mkdir mysql
 
 install:
-  - docker build -t burger-service:latest .
+  - docker build -t notification-service:latest .
   - docker-compose up -d
 
 script:
